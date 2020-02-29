@@ -10,16 +10,29 @@
 </head>
 <body>
     <div class="cursor"></div>
-    <header>
+    <div class="burger">
+        <div id="line1"></div>
+        <div id="line2"></div>
+        <div id="line3"></div>
+    </div>
+    <div class="nav-hidden">
+        <ul>
+            <li><a href="#top">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#project">Project</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+    <header id="top">
         <div class="logo">
             <h2>Portfolio</h2>
         </div>
         <nav>
             <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Project</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#top">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#project">Project</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -30,17 +43,17 @@
                 <h1 class="typing"></h1>
             </div>
         </section>
-        <section class="about">
+        <section class="about" id="about">
             <img class="appear-img" src="./image/icon.jpg" alt="icon">
             <p class= "appear">My name is Basil. <br>
             I am currently study at Hactiv8 to become Javascript Developer.<br>
             Coding is one of my favorite activity beside browsing internet.</p>
         </section>
-        <section class="project">
+        <section class="project" id="project">
 
         </section>
-        <section class="contact">
-            
+        <section class="contact" id="contact">
+
         </section>
     </main>
     <script src="main.js"></script>

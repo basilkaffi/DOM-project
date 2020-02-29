@@ -3,6 +3,7 @@
     padding: 0px;
     box-sizing: border-box;
     cursor: none;
+    scroll-behavior: smooth;
 }
 body{
     font-family: 'Poppins', sans-serif;
@@ -26,6 +27,28 @@ body{
     background: #eeeeee;
 }
 
+.burger{
+    position: fixed;
+    top: 4vh;
+    right: 4vh;
+    z-index: -2;
+    display: none;
+    opacity: 0;
+    transition: 1s all ease;
+}
+.burger div{
+    width: 40px;
+    height: 4px;
+    margin: 8px;
+    background-color: #00adb5;
+}
+.nav-hidden{
+    list-style: none;
+}
+.nav-hidden a{
+    text-decoration: none;
+    color: #00adb5;
+}
 
 /* header */
 
@@ -65,6 +88,7 @@ nav{
 /* main */
  section{
      height: 100vh;
+     z-index: -3;
  }
 
 /* section 1 */
@@ -76,7 +100,6 @@ nav{
     background-size: cover;
     height: 92vh;
     position: relative;
-    z-index: -2;
 }
 .letter{
     position: absolute;
@@ -113,7 +136,6 @@ nav{
 
 .about{
     position: relative;
-    z-index: -2;
     background: linear-gradient(rgba(380,380,380,0.6),rgba(380,380,380,0.6)), url(./image/hactiv8.jpeg);
     background-size: cover;
     background-position-y: -20vh;
@@ -137,16 +159,4 @@ nav{
     opacity: 0;
     transform: translateY(20px);
     transition: 0.6s all ease-in-out;
-}
-
-
-/* section 3 */
-.project{
-    height: 100vh;
-}
-
-
-/* section 4 */
-.contact{
-    height: 100vh;
 }
