@@ -1,8 +1,8 @@
 const text = ["Website", "Apps", "Game"]
     let count = 0
     let index = 0
-    let currentText = ""
-    let letter = ""
+    let anggotaText = ""
+    let huruf = ""
     if(count === text.length) {
         count = 0
     }
@@ -10,12 +10,33 @@ const text = ["Website", "Apps", "Game"]
     if(count === text.length) {
         count = 0
     }
-    currentText = text[count]
-    letter = currentText.slice(0,index++)
-    document.querySelector(".typing").textContent = letter
-    if(letter.length === currentText.length){
+    anggotaText = text[count]
+    huruf = anggotaText.slice(0,index++)
+    document.querySelector(".typing").textContent = huruf
+    if(huruf.length === anggotaText.length){
         count++
         index = 0
     }
     setTimeout(type,550)
 }())
+
+var mouseCursor = document.querySelector('.cursor')
+var navLinks = document.querySelectorAll('.nav-links a')
+
+window.addEventListener('mousemove', cursor)
+
+function cursor(e){
+    mouseCursor.style.top = e.pageY + "px"
+    mouseCursor.style.left = e.pageX + "px"
+}
+
+navLinks.forEach(link => {
+    link.addEventListener('mouseover', () => {
+        mouseCursor.classList.add('cursor-change')
+        link.style.color = 'rgb(25,25,25)'
+    })
+    link.addEventListener('mouseleave', () => {
+        mouseCursor.classList.remove('cursor-change')
+        link.style.color = 'rgb(238,238,238)'
+    })
+})
