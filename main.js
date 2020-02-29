@@ -17,12 +17,11 @@ navLinks.forEach(function(link) {
     link.addEventListener('mouseover', function () {
         mouseCursor.classList.add('cursor-change')
         link.style.color = 'rgb(34,40,49)'
-        link.style.fontSize = '25px'
     })
     link.addEventListener('mouseleave', function () {
         mouseCursor.classList.remove('cursor-change')
         link.style.color = 'rgb(238,238,238)'
-        link.style.fontSize = '16px'
+
     })
 })
 
@@ -54,6 +53,11 @@ if(count === text.length) {
 
 //tampilan appear
 
+var clicked = false
+var burgerLine1 = document.querySelector('#line1')
+var burgerLine2 = document.querySelector('#line2')
+var burgerLine3 = document.querySelector('#line3')
+
 function Appear(){
     var appearing = document.querySelector('.appear')
     var distanceToTop = appearing.getBoundingClientRect().top
@@ -66,21 +70,76 @@ function Appear(){
      appearing.style.opacity = '0'
      appearing.style.transform = 'translateY(20px)'
     }
-    var burger = document.querySelector('.burger')
-    var burgerExist = window.innerHeight*1.5
-    var burgerAppear = burgerExist/1.3
-    if(distanceToTop<burgerExist){
-        burger.style.display = 'block'
+    var hidden = document.querySelector('.hidden')
+    var hiddenExist = window.innerHeight*1.5
+    var hiddenAppear = hiddenExist/1.3
+    if(distanceToTop<hiddenExist){
+        hidden.style.display = 'block'
     }
-    else if(distanceToTop>burgerExist){
-        burger.style.display = 'none'
+    else if(distanceToTop>hiddenExist){
+        hidden.style.display = 'none'
     }
-    if(distanceToTop<burgerAppear){
-        burger.style.opacity = '1'
+    if(distanceToTop<hiddenAppear){
+        hidden.style.opacity = '1'
     }
-    else if(distanceToTop>burgerAppear){
-     burger.style.opacity = '0'
+    else if(distanceToTop>hiddenAppear){
+        hidden.style.opacity = '0'
+        hidden.style.transform = 'translateX(83%)'
+        clicked = false
+        burgerLine1.style.transform ='rotate(0deg)'
+        burgerLine2.style.opacity = '1'
+        burgerLine3.style.transform ='rotate(0deg)'
     }
  }
 
  window.addEventListener('scroll', Appear)
+
+
+ function unhide(){
+    var burger = document.querySelector('.burger')
+    var hidden = document.querySelector('.hidden')
+    var links = document.querySelectorAll('.nav-hidden a')
+    var mouseCursor = document.querySelector('.cursor')
+    burger.addEventListener('click', function(){
+        if (clicked == false){
+            hidden.style.transform = 'translateX(0%)'
+            clicked = true
+            burgerLine1.style.transform ='rotate(-45deg) translate(-10px,10px)'
+            burgerLine2.style.opacity = '0'
+            burgerLine3.style.transform ='rotate(45deg) translate(-10px,-10px)'
+        }
+        else {
+            hidden.style.transform = 'translateX(83%)'
+            clicked = false
+            burgerLine1.style.transform ='rotate(0deg)'
+            burgerLine2.style.opacity = '1'
+            burgerLine3.style.transform ='rotate(0deg)'
+        }
+    })
+    burger.addEventListener('mouseover', function () {
+        mouseCursor.classList.add('cursor-change2')
+    })
+    burger.addEventListener('mouseleave', function () {
+        mouseCursor.classList.remove('cursor-change2')
+    })
+    links.forEach(function(link){
+        link.addEventListener('click',function(){
+            hidden.style.transform = 'translateX(83%)'
+            clicked = false
+            burgerLine1.style.transform ='rotate(0deg)'
+            burgerLine2.style.opacity = '1'
+            burgerLine3.style.transform ='rotate(0deg)'
+        })
+        link.addEventListener('mouseenter', function () {
+            mouseCursor.classList.add('cursor-change2')
+            link.style.opacity ='1'
+        })
+        link.addEventListener('mouseleave', function () {
+            mouseCursor.classList.remove('cursor-change2')
+            link.style.opacity ='0.7'
+        })
+    })
+
+}
+
+unhide()

@@ -4,10 +4,12 @@
     box-sizing: border-box;
     cursor: none;
     scroll-behavior: smooth;
+    list-style: none;
 }
 body{
     font-family: 'Poppins', sans-serif;
     background-color: #222831;
+    overflow-x: hidden;
 }
 .cursor{
     width: 2rem;
@@ -26,28 +28,53 @@ body{
     transform: scale(1.7);
     background: #eeeeee;
 }
+.cursor-change2{
+    transform: scale(1.7);
+}
 
-.burger{
+.hidden{
     position: fixed;
     top: 4vh;
-    right: 4vh;
-    z-index: -2;
+    right: 0px;
+    width: 75vh;
+    height: 92vh;
     display: none;
     opacity: 0;
     transition: 1s all ease;
+    transform: translateX(83%);
+}
+.unhide{
+    transform: translateX(0%);
+}
+.burger{
+    position: absolute;
 }
 .burger div{
-    width: 40px;
-    height: 4px;
-    margin: 8px;
+    width: 46px;
+    height: 3px;
+    margin: 11px;
     background-color: #00adb5;
+    transition: 0.7s all ease;
 }
 .nav-hidden{
-    list-style: none;
+    position: absolute;
+    right: 0px;
+    height: 92vh;
+    width: 65vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
 .nav-hidden a{
+    display: inline-block;
     text-decoration: none;
     color: #00adb5;
+    margin: 7vh;
+    font-weight: 400;
+    font-size: 30px;
+    letter-spacing: 2px;
+    opacity: 0.7;
+    transition: 0.3s all ease;
 }
 
 /* header */
@@ -67,7 +94,8 @@ header{
 .logo h2{
     text-transform: uppercase;
     margin: 20px;
-    letter-spacing: 5px;
+    font-size: 35px;
+    letter-spacing: 12px;
     color: #eeeeee;
 }
 nav{
@@ -75,13 +103,14 @@ nav{
 }
 .nav-links{
     justify-content: space-around;
-    list-style: none;
 }
 .nav-links a{
     text-decoration: none;
     color: #eeeeee;
+    font-size: 23px;
     font-weight: bold;
-    transition: all 0.4s ease;
+    letter-spacing: 2px;
+    transition: all 0.5s ease;
 }
 
 
@@ -136,7 +165,7 @@ nav{
 
 .about{
     position: relative;
-    background: linear-gradient(rgba(380,380,380,0.6),rgba(380,380,380,0.6)), url(./image/hactiv8.jpeg);
+    background: linear-gradient(rgba(330,330,330,0.6),rgba(330,330,330,0.6)), url(./image/hactiv8.jpeg);
     background-size: cover;
     background-position-y: -20vh;
     display: grid;
