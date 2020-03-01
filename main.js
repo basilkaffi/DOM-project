@@ -230,7 +230,7 @@ imageSlider.addEventListener('transitionend',function(){
 
 (function button(){
     const project = document.querySelector('.project')
-    buttonContainer.style.bottom = project.offsetTop - project.offsetHeight/2.6 +'px'
+    buttonContainer.style.bottom = project.offsetTop - project.offsetHeight/2 +'px'
 }())
 
 const masukan = document.querySelector('.kiri')
