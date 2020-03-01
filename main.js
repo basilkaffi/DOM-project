@@ -98,8 +98,18 @@ function Appear(){
  function unhide(){
     var burger = document.querySelector('.burger')
     var hidden = document.querySelector('.hidden')
+    var navHidden = document.querySelector('.nav-hidden')
     var links = document.querySelectorAll('.nav-hidden a')
-    var mouseCursor = document.querySelector('.cursor')
+    const buttonContainer = document.querySelector('.button')
+    navHidden.addEventListener('mouseover',function(){
+        buttonContainer.style.zIndex = '-1'
+        mouseCursor.style.zIndex = '2'
+    })
+    navHidden.addEventListener('mouseleave',function(){
+        buttonContainer.style.zIndex = '0'
+        mouseCursor.style.zIndex = '-1'
+        mouseCursor.classList.remove('cursor-change2')
+    })
     burger.addEventListener('click', function(){
         if (clicked == false){
             hidden.style.transform = 'translateX(0%)'
@@ -132,14 +142,56 @@ function Appear(){
         })
         link.addEventListener('mouseenter', function () {
             mouseCursor.classList.add('cursor-change2')
-            link.style.opacity ='1'
         })
         link.addEventListener('mouseleave', function () {
             mouseCursor.classList.remove('cursor-change2')
-            link.style.opacity ='0.7'
         })
     })
 
 }
-
 unhide()
+
+
+const imageSlider = document.querySelector('.image-slider')
+const images = document.querySelectorAll('.image-slider img')
+const prevBtn = document.querySelector('.prevBtn')
+let counter = 1
+const nextBtn = document.querySelector('.nextBtn')
+const buttonContainer = document.querySelector('.button')
+const width = images[0].clientWidth
+imageSlider.style.transform ='translateX('+(-width*counter)+'px)'
+
+nextBtn.addEventListener('click',function(){
+    imageSlider.style.transition = "transform 0.4s ease"
+    counter++
+    imageSlider.style.transform ='translateX('+(-width*counter)+'px)'
+})
+prevBtn.addEventListener('click',function(){
+    imageSlider.style.transition = "transform 0.4s ease"
+    counter--
+    imageSlider.style.transform ='translateX('+(-width*counter)+'px)'
+})
+
+const imageNext = document.querySelector('.nextBtn img')
+const imagePrev = document.querySelector('.prevBtn img')
+nextBtn.addEventListener('mouseover', function () {
+    mouseCursor.classList.add('cursor-change2')
+    imageNext.style.opacity = '0.9'
+})
+nextBtn.addEventListener('mouseleave', function () {
+    mouseCursor.classList.remove('cursor-change2')
+    imageNext.style.opacity = '0.4'
+})
+prevBtn.addEventListener('mouseover', function () {
+    mouseCursor.classList.add('cursor-change2')
+    imagePrev.style.opacity = '0.9'
+})
+prevBtn.addEventListener('mouseleave', function () {
+    mouseCursor.classList.remove('cursor-change2')
+    imagePrev.style.opacity = '0.4'
+})
+
+(function button(){
+    const project = document.querySelector('.project')
+    buttonContainer.style.bottom = project.offsetTop - project.offsetHeight/2 +'px'
+}())
