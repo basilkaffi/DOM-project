@@ -90,6 +90,26 @@ function Appear(){
         burgerLine2.style.opacity = '1'
         burgerLine3.style.transform ='rotate(0deg)'
     }
+    var imageSlider = document.querySelector('.image-container')
+    const imageNext = document.querySelector('.nextBtn img')
+    const imagePrev = document.querySelector('.prevBtn img')
+    var distanceToTopSlider = imageSlider.getBoundingClientRect().top
+    if(distanceToTopSlider<positionAppear/1.4){
+        imageSlider.style.opacity = '1'
+        imageSlider.style.transform = 'translateY(0px)'
+        imageNext.style.opacity = '0.4'
+        imageNext.style.transform = 'translateX(0px)'
+        imagePrev.style.opacity = '0.4'
+        imagePrev.style.transform = 'translateX(0px)'
+    }
+    else if(distanceToTopSlider>positionAppear*1.3){
+     imageSlider.style.opacity = '0'
+     imageSlider.style.transform = 'translateY(70px)'
+     imageNext.style.opacity = '0'
+     imageNext.style.transform = 'translateX(-50px)'
+     imagePrev.style.opacity = '0'
+     imagePrev.style.transform = 'translateX(50px)'
+    }
  }
 
  window.addEventListener('scroll', Appear)
@@ -103,7 +123,7 @@ function Appear(){
     const buttonContainer = document.querySelector('.button')
     navHidden.addEventListener('mouseover',function(){
         buttonContainer.style.zIndex = '-1'
-        mouseCursor.style.zIndex = '2'
+        mouseCursor.style.zIndex = '3'
     })
     navHidden.addEventListener('mouseleave',function(){
         buttonContainer.style.zIndex = '0'
@@ -142,9 +162,11 @@ function Appear(){
         })
         link.addEventListener('mouseenter', function () {
             mouseCursor.classList.add('cursor-change2')
+            link.style.transform = 'translateY(-8px)'
         })
         link.addEventListener('mouseleave', function () {
             mouseCursor.classList.remove('cursor-change2')
+            link.style.transform = 'translateY(0px)'
         })
     })
 
@@ -160,6 +182,7 @@ const nextBtn = document.querySelector('.nextBtn')
 const buttonContainer = document.querySelector('.button')
 const width = images[0].clientWidth
 imageSlider.style.transform ='translateX('+(-width*counter)+'px)'
+
 
 nextBtn.addEventListener('click',function(){
     if(counter >= images.length - 1) return
@@ -205,8 +228,10 @@ imageSlider.addEventListener('transitionend',function(){
     }
 })
 
-
 (function button(){
     const project = document.querySelector('.project')
-    buttonContainer.style.bottom = project.offsetTop - project.offsetHeight/2 +'px'
+    buttonContainer.style.bottom = project.offsetTop - project.offsetHeight/2.6 +'px'
 }())
+
+const masukan = document.querySelector('.kiri')
+const contactSection = document.querySelector('.contact')
