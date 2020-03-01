@@ -162,11 +162,13 @@ const width = images[0].clientWidth
 imageSlider.style.transform ='translateX('+(-width*counter)+'px)'
 
 nextBtn.addEventListener('click',function(){
+    if(counter >= images.length - 1) return
     imageSlider.style.transition = "transform 0.4s ease"
     counter++
     imageSlider.style.transform ='translateX('+(-width*counter)+'px)'
 })
 prevBtn.addEventListener('click',function(){
+    if(counter <= 0) return
     imageSlider.style.transition = "transform 0.4s ease"
     counter--
     imageSlider.style.transform ='translateX('+(-width*counter)+'px)'
@@ -190,6 +192,19 @@ prevBtn.addEventListener('mouseleave', function () {
     mouseCursor.classList.remove('cursor-change2')
     imagePrev.style.opacity = '0.4'
 })
+imageSlider.addEventListener('transitionend',function(){
+    if(images[counter].id == 'last-clone'){
+        imageSlider.style.transition = 'none'
+        counter = images.length - 2
+        imageSlider.style.transform ='translateX('+(-width*counter)+'px)'
+    }
+    if(images[counter].id == 'first-clone'){
+        imageSlider.style.transition = 'none'
+        counter = images.length - counter
+        imageSlider.style.transform ='translateX('+(-width*counter)+'px)'
+    }
+})
+
 
 (function button(){
     const project = document.querySelector('.project')
